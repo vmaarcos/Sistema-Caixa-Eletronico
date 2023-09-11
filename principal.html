@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="PT-BR">     </html>
+<head>
+    <title>Banco 2</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+    
+    <div>
+        <p>Selecione uma opção:</p>
+        <button id="verSaldoBtn">Ver Saldo</button>
+        <button id="extratoBtn">Extrato</button> 
+        <button id="fazerSaqueBtn">Fazer Saque</button>
+        <button id="fazerDepositoBtn">Fazer Depósito</button>
+        <button id="sairBtn">Sair</button>
+    </div>
+   
+    <script>
+        var senhaCorreta = "3589";
+       var senhaDigitada;                               //tem como fzr esquema do loop 
+
+     do {
+    senhaDigitada = prompt("Digite a senha (3589): ");
+
+    if (senhaDigitada === senhaCorreta) {
+        alert("Senha Correta.");
+    } else {
+        alert("Senha incorreta. Tente novamente.");
+    }
+    } while (senhaDigitada !== senhaCorreta);
+
+            var usuario = prompt("Insira seu nome");
+            alert("É um prazer ter você por aqui! " + usuario);
+
+            var saldo = 100.5;
+
+            function ver_saldo() {
+                alert('Seu saldo atual é: ' + saldo );
+               
+            }
+
+            function extrato() {
+                var extratoBancario = [
+       { data: "01/09/2023", descricao: "Depósito em dinheiro", debito: 0, credito: 1000, saldo: 1000 },
+    { data: "05/09/2023", descricao: "Pagamento de conta de luz", debito: 50, credito: 0, saldo: 950 },
+    { data: "10/09/2023", descricao: "Transferência para João", debito: 200, credito: 0, saldo: 750 },
+  
+];
+
+var extratoTexto = "Extrato Bancário:\n\n";
+
+for (var i = 0; i < extratoBancario.length; i++) {
+    var transacao = extratoBancario[i];
+    extratoTexto += "Data: " + transacao.data + "\n";
+    extratoTexto += "Descrição: " + transacao.descricao + "\n";
+    extratoTexto += "Débito: " + transacao.debito + "\n";
+    extratoTexto += "Crédito: " + transacao.credito + "\n";
+    extratoTexto += "Saldo: " + transacao.saldo + "\n\n";
+}
+
+alert(extratoTexto);
+//nossa isso deu mt trabalho mds 
+
+            }
+
+         
+            function fazer_saque() {
+                var saque = parseFloat(prompt('Qual o valor para saque?'));
+
+                if (isNaN(saque) || saque <= 0) {
+                    alert('Operação não autorizada. Por favor, insira um valor válido para saque.');
+                } else if (saque > saldo) {
+                    alert('Operação não autorizada. Saldo insuficiente.');
+                } else {
+                    saldo -= saque;
+                    ver_saldo();
+                }
+            }
+
+            function fazer_deposito() {
+                var deposito = parseFloat(prompt('Qual o valor para depósito?'));
+
+                if (isNaN(deposito) || deposito === '') {
+                    alert('Por favor, informe um número válido.');
+                } else {
+                    saldo += deposito;
+                    ver_saldo();
+                }
+            }
+
+
+    function sair() {
+        const Exit = ("foi um prazer ter você por aqui!");
+        alert('foi um prazer ter você por aqui!, volte sempre. ' + usuario);
+        var confirma = confirm('Você deseja sair?');
+        if (confirma) {
+            window.close();
+        }
+    }
+
+     
+
+            document.getElementById("verSaldoBtn").addEventListener("click", ver_saldo, );
+             document.getElementById("extratoBtn").addEventListener("click", extrato);
+            document.getElementById("fazerSaqueBtn").addEventListener("click", fazer_saque);
+            document.getElementById("fazerDepositoBtn").addEventListener("click", fazer_deposito);
+            document.getElementById("sairBtn").addEventListener("click", sair);
+        
+       
+    </script>   
+</body>
+</html>
+
